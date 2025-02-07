@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // ✅ Assegura't d'importar BrowserRouter
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import Navbar from "./components/Navbar";
 import Banner from "./components/Banner";
 import ProductGrid from "./components/ProductGrid";
@@ -12,20 +12,14 @@ const Success = () => <h1>Pagament completat!</h1>;
 const Cancel = () => <h1>El pagament s'ha cancel·lat.</h1>;
 
 const App = () => {
-  const [filteredProducts, setFilteredProducts] = useState([]); // ✅ Afegim estat per als productes filtrats
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   return (
-    <Router>  {/* ✅ Assegura't que tot estigui dins de <Router> */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
+    <BrowserRouter basename="/ecomerce">  
+      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <CssBaseline />
         <Navbar />
-        <Routes>  {/* ✅ Routes ha d'estar dins de <Router> */}
+        <Routes> 
           <Route
             path="/"
             element={
@@ -44,7 +38,7 @@ const App = () => {
         </Routes>
         <Footer />
       </Box>
-    </Router> 
+    </BrowserRouter> 
   );
 };
 
